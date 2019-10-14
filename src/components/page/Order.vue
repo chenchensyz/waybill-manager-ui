@@ -28,12 +28,12 @@
       <el-table :data="tableData" border class="table" ref="multipleTable"
                 header-cell-class-name="table-header" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" align="center"></el-table-column>
-        <el-table-column prop="orderNum" label="单号" align="center"></el-table-column>
+        <el-table-column prop="orderNum" label="单号" align="center" width="180"></el-table-column>
         <el-table-column prop="userName" label="代购(微信名)" align="center"></el-table-column>
         <el-table-column prop="customer" label="顾客姓名" align="center"></el-table-column>
         <el-table-column prop="telephone" label="顾客手机号" align="center"></el-table-column>
-        <el-table-column prop="detail" label="商品明细" align="center"></el-table-column>
-        <el-table-column label="操作" width="180" align="center">
+        <el-table-column prop="detail" label="商品明细" align="center" :show-overflow-tooltip='true'></el-table-column>
+        <el-table-column label="操作" width="130" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">
               编辑
@@ -241,7 +241,7 @@
             }
             httpPost('order/saveOrder', param).then(res => {
               if (res.code == 0) {
-                this.$message.success(`修改 ${this.form.orderNum} 成功`);
+                this.$message.success(res.message);
                 this.getData();
                 // this.$set(this.tableData, this.idx, this.form);
                 this.editVisible = false;

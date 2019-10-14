@@ -12,8 +12,9 @@
       <el-table :data="tableData" style="width: 100%;margin-bottom: 20px;"
                 row-key="id" border default-expand-all :tree-props="{children: 'subs'}">
         <el-table-column type="index" width="55" align="center"></el-table-column>
-        <el-table-column prop="title" label="权限编码" align="center"></el-table-column>
-        <el-table-column prop="roleName" label="角色名称" align="center"></el-table-column>
+        <el-table-column prop="title" label="权限名称" align="center"></el-table-column>
+        <el-table-column prop="index" label="权限编码" align="center"></el-table-column>
+        <el-table-column prop="icon" label="图标"></el-table-column>
         <el-table-column label="操作" width="180" align="center">
           <template slot-scope="scope">
             <el-button type="text" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>

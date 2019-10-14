@@ -3,25 +3,20 @@
     <div class="ms-login">
       <div class="ms-title">一路查单</div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
-        <el-form-item prop="username">
-          <el-input v-model="param.userName" placeholder="username">
+        <el-form-item prop="userName">
+          <el-input v-model="param.userName" placeholder="用户名">
             <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input
-            type="password"
-            placeholder="password"
-            v-model="param.password"
-            @keyup.enter.native="submitForm()"
-          >
+          <el-input type="password" placeholder="密码" v-model="param.password"
+                    @keyup.enter.native="submitForm()">
             <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
           </el-input>
         </el-form-item>
         <div class="login-btn">
-          <el-button type="primary" @click="submitForm()">登录</el-button>
+          <el-button type="primary" @click="submitForm()" :loading="loading">登录</el-button>
         </div>
-        <p class="login-tips">Tips : 用户名和密码随便填。</p>
       </el-form>
     </div>
   </div>
@@ -41,10 +36,19 @@
           userName: [{required: true, message: '请输入用户名', trigger: 'blur'}],
           password: [{required: true, message: '请输入密码', trigger: 'blur'}],
         },
+        clickNum: 0,
+        loading: false
       };
     },
     methods: {
       submitForm() {
+        if (this.clickNum >= 5) {
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false
+          }, 30000)
+          return false;
+        }
         this.$refs.login.validate(valid => {
           if (valid) {
             var userInfo = {
@@ -57,6 +61,7 @@
                 localStorage.setItem('userName', res.data.userName) // 保存用户到本地会话
                 localStorage.setItem('timestamp', res.data.timestamp) // 角色
                 this.$router.push('/')  // 登录成功，跳转到主页
+                return false;
               } else {
                 this.$message({message: res.message, type: 'error'})
               }
@@ -66,8 +71,8 @@
           } else {
             this.$message.error('请输入账号和密码');
             console.log('error submit!!');
-            return false;
           }
+          this.clickNum = this.clickNum + 1;
           return false;
         });
       },
