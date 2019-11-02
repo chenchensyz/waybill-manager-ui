@@ -48,7 +48,7 @@ export default [
       {
         path: '/buyerList',
         component: resolve => require(['@/components/page/BuyerList'], resolve),
-        meta: {title: '买手列表'}
+        meta: {title: '采购列表'}
       },
       {
         path: '/userList',

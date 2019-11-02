@@ -100,7 +100,6 @@
     data() {
       return {
         query: {
-          state: 1,
           address: '',
           name: '',
           pageNum: 1,

@@ -36,7 +36,7 @@ service.interceptors.response.use(response => {
       case 401:
         localStorage.clear();
         Routers.push('/login');
-        err.message = '登陆超时'
+        err.message = '当前登陆信息失效，请重新登陆'
         break
       case 403:
         err.message = '拒绝访问'

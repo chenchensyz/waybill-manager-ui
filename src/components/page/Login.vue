@@ -5,17 +5,17 @@
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="userName">
           <el-input v-model="param.userName" placeholder="用户名">
-            <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
+            <el-button slot="prepend" icon="el-icon-lx-people">账号</el-button>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input type="password" placeholder="密码" v-model="param.password"
                     @keyup.enter.native="submitForm()">
-            <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
+            <el-button slot="prepend" icon="el-icon-lx-lock">密码</el-button>
           </el-input>
         </el-form-item>
         <div class="login-btn">
-          <el-button type="primary" @click="submitForm()" :loading="loading">登录</el-button>
+          <el-button type="primary" @click="submitForm()" :loading="loading">{{loginText}}</el-button>
         </div>
       </el-form>
     </div>
@@ -29,13 +29,14 @@
     data: function () {
       return {
         param: {
-          userName: 'admin',
-          password: '123123',
+          userName: '',
+          password: '',
         },
         rules: {
           userName: [{required: true, message: '请输入用户名', trigger: 'blur'}],
           password: [{required: true, message: '请输入密码', trigger: 'blur'}],
         },
+        loginText: "登陆",
         clickNum: 0,
         loading: false
       };
@@ -44,8 +45,11 @@
       submitForm() {
         if (this.clickNum >= 5) {
           this.loading = true;
+          this.loginText = "请30秒后重试";
           setTimeout(() => {
-            this.loading = false
+            this.loading = false;
+            this.clickNum = 0;
+            this.loginText = "登陆";
           }, 30000)
           return false;
         }
@@ -86,7 +90,7 @@
     width: 100%;
     height: 100%;
     background-image: url(../../assets/img/login-bg.jpg);
-    background-size: 100%;
+    background-size: 89%;
   }
 
   .ms-title {

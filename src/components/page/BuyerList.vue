@@ -203,6 +203,7 @@
           if (valid) {
             var param = {
               id: this.form.id,
+              userName: this.form.userName,
               nickName: this.form.nickName,
               telephone: this.form.telephone,
               remark: this.form.remark,

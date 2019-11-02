@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-lx-calendar"></i> 用户设置
+          <i class="el-icon-lx-calendar"></i> 设置
         </el-breadcrumb-item>
         <el-breadcrumb-item>账户信息</el-breadcrumb-item>
       </el-breadcrumb>
@@ -29,11 +29,11 @@
           <el-form-item label="创建时间">
             <el-input v-model="form.createTimeStr" disabled="disabled"></el-input>
           </el-form-item>
-          <el-form-item label="修改时间">
-            <el-input v-model="form.updateTimeStr" disabled="disabled"></el-input>
-          </el-form-item>
+          <!--<el-form-item label="修改时间">-->
+            <!--<el-input v-model="form.updateTimeStr" disabled="disabled"></el-input>-->
+          <!--</el-form-item>-->
           <el-form-item>
-            <el-button type="primary" @click="onSubmit('form')">表单提交</el-button>
+            <el-button type="primary" @click="onSubmit('form')">保存</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>

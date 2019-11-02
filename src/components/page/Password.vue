@@ -21,7 +21,7 @@
             <el-input v-model="form.confirm" type="password"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="onSubmit('form')">表单提交</el-button>
+            <el-button type="primary" @click="onSubmit('form')">保存</el-button>
             <el-button>取消</el-button>
           </el-form-item>
         </el-form>

@@ -196,4 +196,8 @@
   .el-dropdown-menu__item {
     text-align: center;
   }
+
+  .el-menu-item.is-active i{
+    color: white;
+  }
 </style>
