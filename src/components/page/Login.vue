@@ -38,21 +38,29 @@
         },
         loginText: "登陆",
         clickNum: 0,
-        loading: false
+        loading: false,
+        totalTime: 30
       };
     },
     methods: {
       submitForm() {
         if (this.clickNum >= 5) {
+          this.loginText = '请' + this.totalTime + '秒后重试';
           this.loading = true;
-          this.loginText = "请30秒后重试";
-          setTimeout(() => {
-            this.loading = false;
-            this.clickNum = 0;
-            this.loginText = "登陆";
-          }, 30000)
+          let timeout = this.totalTime;
+          let clock = window.setInterval(() => {
+            timeout--;
+            this.loginText = '请' + timeout + '秒后重试'
+            if (timeout == 0) {
+              window.clearInterval(clock)
+              this.loading = false;
+              this.clickNum = 0;
+              this.loginText = "登陆";
+            }
+          }, 1000)
           return false;
         }
+
         this.$refs.login.validate(valid => {
           if (valid) {
             var userInfo = {
