@@ -66,7 +66,7 @@
             </span>
     </el-dialog>
 
-    <el-dialog title="批量增加" :visible.sync="addMoreVisible" width="30%">
+    <el-dialog title="批量增加（中间商）" :visible.sync="addMoreVisible" width="30%">
       <el-upload class="upload-file" :action="uploadAction" :headers="uploadHeaders" :file-list="fileList"
                  multiple :on-success="handleSuccess" :on-error="handleError">
         <el-button slot="trigger" size="small" type="primary">点击上传</el-button>

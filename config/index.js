@@ -10,13 +10,13 @@ module.exports = {
 			assetsSubDirectory: 'static',
 			assetsPublicPath: '/',
       proxyTable: {
-        '/': {
-          target: 'http://localhost:8084/waybill/',
-          changeOrigin: true,
-          pathRewrite: {
-            '^/': ''
-          }
-        }
+        // '/': {
+        //   target: 'http://localhost:8084/waybill/',
+        //   changeOrigin: true,
+        //   pathRewrite: {
+        //     '^/': ''
+        //   }
+        // }
       },
 
 				// Various Dev Server settings

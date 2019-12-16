@@ -33,6 +33,7 @@
         <el-table-column prop="customer" label="顾客姓名" align="center"></el-table-column>
         <el-table-column prop="telephone" label="顾客手机号" align="center"></el-table-column>
         <el-table-column prop="detail" label="商品明细" align="center" :show-overflow-tooltip='true'></el-table-column>
+        <el-table-column prop="createTimeStr" label="创建时间" align="center"></el-table-column>
         <el-table-column label="操作" width="130" align="center">
           <template slot-scope="scope">
             <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">
@@ -46,8 +47,8 @@
       </el-table>
       <div class="pagination">
         <el-pagination background layout="total, prev, pager, next, jumper"
-          :current-page="query.pageNum"  :page-size="query.pageSize" :total="pageTotal"
-          @current-change="handlePageChange">
+                       :current-page="query.pageNum" :page-size="query.pageSize" :total="pageTotal"
+                       @current-change="handlePageChange">
         </el-pagination>
       </div>
     </div>
@@ -58,7 +59,7 @@
         <el-form-item label="单号" prop="orderNum">
           <el-input v-model="form.orderNum"></el-input>
         </el-form-item>
-        <el-form-item label="代购(微信名)" prop="userName">
+        <el-form-item label="代购(微信名)">
           <el-input v-model="form.userName"></el-input>
         </el-form-item>
         <el-form-item label="顾客姓名" prop="customer">
@@ -70,6 +71,9 @@
         <el-form-item label="商品明细" prop="detail">
           <el-input label="商品明细" v-model="form.detail" type="textarea" :rows="4"></el-input>
         </el-form-item>
+        <el-form-item label="快递网址">
+          <el-input v-model="form.website"></el-input>
+        </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
                 <el-button @click="editVisible = false">取 消</el-button>
@@ -77,7 +81,7 @@
             </span>
     </el-dialog>
 
-    <el-dialog title="批量增加" :visible.sync="addMoreVisible" width="30%">
+    <el-dialog title="批量增加（订单）" :visible.sync="addMoreVisible" width="30%">
       <el-upload class="upload-file" :action="uploadAction" :headers="uploadHeaders" :file-list="fileList"
                  multiple :on-success="handleSuccess" :on-error="handleError">
         <el-button slot="trigger" size="small" type="primary">点击上传</el-button>
@@ -222,7 +226,8 @@
           orderNum: row.orderNum,
           customer: row.customer,
           telephone: row.telephone,
-          detail: row.detail
+          detail: row.detail,
+          website: row.website
         };
         this.editVisible = true;
       },
@@ -236,7 +241,8 @@
               orderNum: this.form.orderNum,
               customer: this.form.customer,
               telephone: this.form.telephone,
-              detail: this.form.detail
+              detail: this.form.detail,
+              website: this.form.website
             }
             httpPost('order/saveOrder', param).then(res => {
               if (res.code == 0) {
@@ -273,7 +279,8 @@
           orderNum: '',
           customer: '',
           telephone: '',
-          detail: ''
+          detail: '',
+          website: ''
         };
         this.editVisible = true;
       },
