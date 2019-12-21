@@ -2,16 +2,16 @@
   <div class="login-wrap">
     <div class="ms-login">
       <div class="ms-title">一路查单</div>
-      <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
-        <el-form-item prop="userName">
+      <el-form :model="param" :rules="rules" ref="login"  label-width="60px" class="ms-content">
+        <el-form-item prop="userName" label="账号" class="login-title">
           <el-input v-model="param.userName" placeholder="用户名">
-            <el-button slot="prepend" icon="el-icon-lx-people">账号</el-button>
+            <!--<el-button slot="prepend" icon="el-icon-lx-people">账号</el-button>-->
           </el-input>
         </el-form-item>
-        <el-form-item prop="password">
+        <el-form-item prop="password" label="密码" class="login-title">
           <el-input type="password" placeholder="密码" v-model="param.password"
                     @keyup.enter.native="submitForm()">
-            <el-button slot="prepend" icon="el-icon-lx-lock">密码</el-button>
+            <!--<el-button slot="prepend" icon="el-icon-lx-lock">密码</el-button>-->
           </el-input>
         </el-form-item>
         <div class="login-btn">
@@ -139,5 +139,15 @@
     font-size: 12px;
     line-height: 30px;
     color: #fff;
+  }
+
+  .login-title{
+    border-right-color: rgba(0, 0, 0, 0.1);
+    border-left-color: rgba(0, 0, 0, 0.1);
+    background-color: #f5f7fa;
+    color: inherit;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-radius:5px
   }
 </style>

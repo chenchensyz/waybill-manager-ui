@@ -64,8 +64,14 @@
       // 用户名下拉菜单选择事件
       handleCommand(command) {
         if (command == 'loginout') {
-          localStorage.clear();
-          this.$router.push('/login');
+          this.$confirm('确定要退出吗？', '提示', {
+            type: 'warning'
+          }).then(() => {
+            localStorage.clear();
+            this.$router.push('/login');
+          }).catch(() => {
+
+          });
         }
       },
       // 侧边栏折叠

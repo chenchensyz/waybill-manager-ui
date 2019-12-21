@@ -7,21 +7,26 @@
     </div>
     <div class="container">
       <div class="handle-box">
-        <el-dropdown @command="handleTags" trigger="click">
-          <el-button size="mini" type="primary">
-            新增<i class="el-icon-arrow-down el-icon--right"></i>
-          </el-button>
-          <el-dropdown-menu size="small" slot="dropdown">
-            <el-dropdown-item command="all">批量增加</el-dropdown-item>
-            <el-dropdown-item command="one">单条增加</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+        <!--<el-dropdown @command="handleTags" trigger="click">-->
+          <!--<el-button size="mini" type="primary">-->
+            <!--新增<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>-->
+          <!--</el-button>-->
+          <!--<el-dropdown-menu size="small" slot="dropdown">-->
+            <!--<el-dropdown-item command="all">批量增加</el-dropdown-item>-->
+            <!--<el-dropdown-item command="one">单条增加</el-dropdown-item>-->
+          <!--</el-dropdown-menu>-->
+        <!--</el-dropdown>-->
+        <el-button type="primary" icon="el-icon-upload2" @click="addAll">批量增加</el-button>
+
         <el-input v-model="query.orderNum" placeholder="单号" class="handle-input mr10" clearable></el-input>
         <el-input v-model="query.userName" placeholder="代购(微信名)" class="handle-input mr10" clearable></el-input>
         <el-input v-model="query.customer" placeholder="顾客姓名" class="handle-input mr10" clearable></el-input>
         <el-input v-model="query.telephone" placeholder="顾客手机号" class="handle-input mr10" clearable></el-input>
         <el-button type="primary" icon="el-icon-search" @click="handleSearch">搜索</el-button>
+
+        <el-button type="primary" icon="el-icon-plus" @click="addOne" style="float: right">新增</el-button>
       </div>
+
       <el-button type="danger" icon="el-icon-delete" v-if="delShow" @click="delAllSelection">
         批量删除
       </el-button>
