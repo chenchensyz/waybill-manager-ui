@@ -1,4 +1,5 @@
 <template>
+  <div class="login-div">
   <div class="login-wrap">
     <div class="ms-login">
       <div class="ms-title">一路查单</div>
@@ -19,6 +20,12 @@
         </div>
       </el-form>
     </div>
+  </div>
+  <div class="login-beian">
+<!--    备案号：<router-link target="_blank" :to="{path:'http://www.beian.miit.gov.cn'}">苏ICP备19068096号</router-link>-->
+
+    <p>备案号：<a :href="'http://www.beian.miit.gov.cn/'" target="_blank" >苏ICP备19068096号</a></p>
+  </div>
   </div>
 </template>
 
@@ -93,10 +100,16 @@
 </script>
 
 <style scoped>
-  .login-wrap {
+  .login-div {
     position: relative;
     width: 100%;
     height: 100%;
+  }
+
+  .login-wrap {
+    position: relative;
+    width: 100%;
+    height: 96%;
     background-image: url(../../assets/img/login-bg.jpg);
     background-size: 89%;
   }
@@ -149,5 +162,10 @@
     border-top: 0px;
     border-bottom: 0px;
     border-radius:5px
+  }
+
+  .login-beian{
+    position: absolute;
+    right: 10px;
   }
 </style>
